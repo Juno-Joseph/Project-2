@@ -10,6 +10,8 @@ const choiceTexts = document.querySelectorAll(".choice-text");
 const scoreDisplay = document.getElementById("score");
 const questionCounter = document.getElementById("question-counter");
 const timerText = document.getElementById("timer-text");
+const correctSound = new Audio('./sounds/correct.mp3');
+const incorrectSound = new Audio('./sounds/incorrect.mp3'); 
 
 // Fetch and prepare quiz
 fetch('./questions.json')
@@ -55,8 +57,12 @@ function handleChoice(container, selectedKey) {
   if (isCorrect) {
     container.classList.add("correct");
     score++;
+    correctSound.currentTime = 0; // Rewind to start
+    correctSound.play();
   } else {
     container.classList.add("incorrect");
+    incorrectSound.currentTime = 0; // Rewind to start
+    incorrectSound.play(); // Play incorrect sound
     // Highlight the correct answer
     const correctIndex = ["A", "B", "C", "D"].indexOf(correctAnswer);
     choiceContainers[correctIndex].classList.add("correct");
