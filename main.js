@@ -1,107 +1,107 @@
+let questions = [];
 let currentQuestionIndex = 0;
 let score = 0;
-let questions = [];
-let selectedQuestions = [];
-let userAnswers = [];
+let timer;
+let timeLeft = 10;
 
-const questionElement = document.getElementById("question");
-const choiceContainers = document.querySelectorAll(".choice-container");
-const choiceTexts = document.querySelectorAll(".choice-text");
-const scoreDisplay = document.getElementById("score");
-const questionCounter = document.getElementById("question-counter");
-const timerText = document.getElementById("timer-text");
-const correctSound = new Audio('./sounds/correct.mp3');
-const incorrectSound = new Audio('./sounds/incorrect.mp3'); 
+// Load sounds once
+const correctSound = new Audio("sounds/correct.mp3");
+const incorrectSound = new Audio("sounds/incorrect.mp3");
 
-// Fetch and prepare quiz
-fetch('./questions.json')
-  .then(response => response.json())
-  .then(data => {
-    questions = data;
-    selectedQuestions = getRandomQuestions(10, questions);
-    showQuestion();
-    startTimer();
-  })
-  .catch(error => console.error("Error loading questions:", error));
-
-// Pick 10 unique questions
-function getRandomQuestions(count, questionPool) {
-  const shuffled = [...questionPool].sort(() => 0.5 - Math.random());
-  return shuffled.slice(0, count);
-}
-
-// Show current question
-function showQuestion() {
-  const q = selectedQuestions[currentQuestionIndex];
-  questionElement.innerText = q.question;
-  choiceTexts[0].innerText = q.A;
-  choiceTexts[1].innerText = q.B;
-  choiceTexts[2].innerText = q.C;
-  choiceTexts[3].innerText = q.D;
-
-  questionCounter.innerText = `Question: ${currentQuestionIndex + 1} / 10`;
-  scoreDisplay.innerText = `Score: ${score}`;
-
-  choiceContainers.forEach((container, index) => {
-    container.classList.remove("correct", "incorrect");
-    container.style.pointerEvents = "auto";
-    container.onclick = () => handleChoice(container, ["A", "B", "C", "D"][index]);
+// Load questions
+fetch("questions.json")
+  .then((response) => response.json())
+  .then((data) => {
+    questions = shuffleArray(data).slice(0, 10); // pick 10 random
+    displayQuestion();
   });
+
+function shuffleArray(array) {
+  return array.sort(() => Math.random() - 0.5);
 }
 
-// Handle answer selection
-function handleChoice(container, selectedKey) {
-  const correctAnswer = selectedQuestions[currentQuestionIndex].answer;
-  const isCorrect = selectedKey === correctAnswer;
+function displayQuestion() {
+  resetState();
 
-  if (isCorrect) {
-    container.classList.add("correct");
-    score++;
-    correctSound.currentTime = 0; // Rewind to start
+  const questionObj = questions[currentQuestionIndex];
+  document.getElementById("question-text").innerText = questionObj.question;
+
+  const answers = [
+    questionObj.answer_A,
+    questionObj.answer_B,
+    questionObj.answer_C,
+    questionObj.answer_D,
+  ];
+
+  const optionsContainer = document.getElementById("options-container");
+  answers.forEach((answer) => {
+    const btn = document.createElement("button");
+    btn.innerText = answer;
+    btn.classList.add("option-btn");
+    btn.onclick = () => checkAnswer(btn);
+    optionsContainer.appendChild(btn);
+  });
+
+  startTimer();
+}
+
+function checkAnswer(selectedBtn) {
+  const correct = questions[currentQuestionIndex].correct_answer;
+
+  disableAllOptions();
+
+  if (selectedBtn.innerText === correct) {
+    correctSound.pause();
+    correctSound.currentTime = 0;
     correctSound.play();
+    selectedBtn.classList.add("correct");
+    score++;
   } else {
-    container.classList.add("incorrect");
-    incorrectSound.currentTime = 0; // Rewind to start
-    incorrectSound.play(); // Play incorrect sound
-    // Highlight the correct answer
-    const correctIndex = ["A", "B", "C", "D"].indexOf(correctAnswer);
-    choiceContainers[correctIndex].classList.add("correct");
+    incorrectSound.pause();
+    incorrectSound.currentTime = 0;
+    incorrectSound.play();
+    selectedBtn.classList.add("incorrect");
   }
 
-  choiceContainers.forEach(c => c.style.pointerEvents = "none");
-
-  userAnswers.push({
-    question: selectedQuestions[currentQuestionIndex].question,
-    userAnswer: selectedKey,
-    correctAnswer: correctAnswer
-  });
-
-  // Move to next question after a short delay
-  setTimeout(() => {
-    currentQuestionIndex++;
-    if (currentQuestionIndex < 10) {
-      showQuestion();
-    } else {
-      // Store data and redirect
-      localStorage.setItem("score", score);
-      localStorage.setItem("answers", JSON.stringify(userAnswers));
-      window.location.href = "result.html";
-    }
-  }, 1500);
+  document.getElementById("next-btn").style.display = "inline-block";
+  clearInterval(timer);
 }
 
-// Optional: Timer countdown
-let timeLeft = 20;
-let timer;
+function disableAllOptions() {
+  const allBtns = document.querySelectorAll(".option-btn");
+  allBtns.forEach((btn) => {
+    btn.disabled = true;
+  });
+}
+
+function resetState() {
+  document.getElementById("next-btn").style.display = "none";
+  document.getElementById("options-container").innerHTML = "";
+  clearInterval(timer);
+  timeLeft = 10;
+  document.getElementById("timer").innerText = `Time: ${timeLeft}`;
+}
 
 function startTimer() {
   timer = setInterval(() => {
-    timerText.innerText = `Time: ${timeLeft}`;
     timeLeft--;
-
-    if (timeLeft < 0) {
+    document.getElementById("timer").innerText = `Time: ${timeLeft}`;
+    if (timeLeft <= 0) {
       clearInterval(timer);
-      handleChoice({ classList: { add: () => {} }, style: {} }, "None");
+      disableAllOptions();
+      document.getElementById("next-btn").style.display = "inline-block";
     }
   }, 1000);
 }
+
+function nextQuestion() {
+  currentQuestionIndex++;
+  if (currentQuestionIndex < questions.length) {
+    displayQuestion();
+  } else {
+    localStorage.setItem("quizScore", score);
+    window.location.href = "result.html";
+  }
+}
+
+document.getElementById("next-btn").addEventListener("click", nextQuestion);
