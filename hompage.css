@@ -1,5 +1,5 @@
 :root {
-  background-color: #ecf5ff;
+  background-color: #56A5EB ;
   font-size: 62.5%;
 }
 
@@ -11,6 +11,14 @@
   color: #333;
 }
 
+header {
+  width: 100vw;
+  text-align: center;
+  background-color: #355968;
+  color: white;
+  padding: 2rem 0;
+}
+
 h1,
 h2,
 h3,
@@ -20,7 +28,7 @@ h4 {
 
 h1 {
   font-size: 5.4rem;
-  color: #56a5eb;
+  color: #FFB4A2;
   margin-bottom: 5rem;
 }
 
