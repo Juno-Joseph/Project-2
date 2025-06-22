@@ -2,71 +2,91 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Quiz Home</title>
-
-  
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome to Our Quiz</title>
   <style>
     body {
-      background: #f2f8ff;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(145deg, #290038, #480055);
       font-family: 'Segoe UI', sans-serif;
-    }
-
-    .hero {
-      min-height: 100vh;
       display: flex;
-      align-items: center;
       justify-content: center;
-      flex-direction: column;
+      align-items: center;
+      height: 100vh;
+      color: white;
       text-align: center;
-      padding: 2rem;
+      overflow: hidden;
     }
 
-    .hero h1 {
-      font-size: 4rem;
-      color: #0d6efd;
-      font-weight: 700;
+    .container {
+      animation: fadeIn 1s ease-in-out;
     }
 
-    .hero p {
-      font-size: 1.25rem;
-      max-width: 600px;
-      margin: 1rem auto 2rem;
-      color: #555;
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: #ff00f7;
+      text-shadow: 0 0 10px #ff00f7, 0 0 20px #8e00ff;
     }
 
-    .btn-primary, .btn-secondary {
-      padding: 0.75rem 2rem;
+    p {
       font-size: 1.2rem;
-      border-radius: 8px;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      color: #dddddd;
+    }
+
+    .btn {
+      display: inline-block;
+      background: linear-gradient(90deg, #00eaff, #d400ff);
+      color: white;
+      padding: 1rem 2rem;
+      margin: 0.5rem;
+      border: none;
+      border-radius: 50px;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 0 10px #00eaff, 0 0 20px #d400ff;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 20px #00eaff, 0 0 40px #d400ff;
     }
 
     footer {
-      position: fixed;
-      bottom: 10px;
-      width: 100%;
-      text-align: center;
-      font-size: 0.9rem;
-      color: #888;
+      position: absolute;
+      bottom: 15px;
+      font-size: 0.85rem;
+      color: #aaa;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   </style>
 </head>
 <body>
 
-  <div class="hero">
-    <h1>Welcome to the Ultimate Quiz</h1>
+  <div class="container">
+    <h1>Welcome to Our Quiz App</h1>
     <p>
-      Test your knowledge across a variety of fun and interesting topics!
-      You’ll face 10 random questions each time, so no two quizzes are ever the same.
+      Challenge yourself with 10 random questions covering fun, weird, and surprising trivia!<br>
+      Every time you play, the questions change — let's see how much you know!
     </p>
-    <a href="game.html" class="btn btn-primary mb-3">Start Quiz</a>
-    <a href="result.html" class="btn btn-secondary">View Results</a>
+    <a href="game.html" class="btn">Start Quiz</a>
+    <a href="result.html" class="btn">View Results</a>
+    <footer>&copy; 2025 Quiz App by Akash, Juno, and Mrit</footer>
   </div>
-
-  <footer>
-    &copy; 2025 Quiz App. Built by Akash, Juno and Mrit.
-  </footer>
 
 </body>
 </html>
