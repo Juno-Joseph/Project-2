@@ -1,112 +1,59 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
-    <title>CS 355 Project 2</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Game Page</title>
+
+  <link rel="stylesheet" href="game.css" />
 </head>
+
 <body>
-    <div class="quiz-container">
-        <h1>Knowledge Quiz</h1>
-        <div class="timer">Time Left: 10 seconds</div>
-        <h2 class="question">???????</h2>
-        <div class="options">
-            <button class="option">option 1</button>
-            <button class="option">option 2</button>
-            <button class="option">option 3</button>
-            <button class="option">option 4</button>
+ <div id="quiz-page" class="hidden">
+            <div class="quiz-header">
+                <h2 class="quiz-name">QUIZ NAME</h2>
+                <div class="right-bar">
+                    <span id="question-counter">Question: 1 / 10</span>
+                    <span id="score">Score: 0</span>
+                    <span id="timer-text">Time: 20</span>
+                </div>
+            </div>
+             <div class="timer-bar">
+                <div class="timer-bar-fill" style="width: 100%"></div>
+            </div>
+  
+ <div class="quiz-container">   
+    <div class="left-area">
+        <!-- Left Side: Question and Answers -->
+        <h2 id="question">What is the answer to this questions?</h2>
+        <div class="choices-grid">
+            <div class="choice-container">
+                <p class="choice-prefix">A</p>
+                <p class="choice-text">Choice 1</p>
+            </div>
+            <div class="choice-container">
+                <p class="choice-prefix">B</p>
+                <p class="choice-text">Choice 2</p>
+            </div>
+            <div class="choice-container">
+                <p class="choice-prefix">C</p>
+                <p class="choice-text">Choice 3</p>
+            </div>
+            <div class="choice-container">
+                <p class="choice-prefix">D</p>
+                <p class="choice-text">Choice 4</p>
+            </div>
         </div>
-        <button class="next-btn">Next</button>
     </div>
-
-    <!-- Questions -->
-    <div class="quiz-result">
-        <h2>You have scored 5 out of 10</h2>
-        <div class="question-container">
-            <div class="question">???????</div>
-            <div class="user-answer">Your answer: Not answered</div>
-            <div class="correct-answer">Correct answer: correct answer</div>
-        </div>
-
-        <h2>You have scored 5 out of 10</h2>
-        <div class="question-container">
-            <div class="question">???????</div>
-            <div class="user-answer">Your answer: Not answered</div>
-            <div class="correct-answer">Correct answer: correct answer</div>
-        </div>
-
-        <h2>You have scored 5 out of 10</h2>
-        <div class="question-container">
-            <div class="question">???????</div>
-            <div class="user-answer">Your answer: Not answered</div>
-            <div class="correct-answer">Correct answer: correct answer</div>
-        </div>
-
-        <h2>You have scored 5 out of 10</h2>
-        <div class="question-container">
-            <div class="question">???????</div>
-            <div class="user-answer">Your answer: Not answered</div>
-            <div class="correct-answer">Correct answer: correct answer</div>
-        </div>
-
-        <h2>You have scored 5 out of 10</h2>
-        <div class="question-container">
-            <div class="question">???????</div>
-            <div class="user-answer">Your answer: Not answered</div>
-            <div class="correct-answer">Correct answer: correct answer</div>
-        </div>
-
-        <h2>You have scored 5 out of 10</h2>
-        <div class="question-container">
-            <div class="question">???????</div>
-            <div class="user-answer">Your answer: Not answered</div>
-            <div class="correct-answer">Correct answer: correct answer</div>
-        </div>
-
-        <h2>You have scored 5 out of 10</h2>
-        <div class="question-container">
-            <div class="question">???????</div>
-            <div class="user-answer">Your answer: Not answered</div>
-            <div class="correct-answer">Correct answer: correct answer</div>
-        </div>
-
-        <h2>You have scored 5 out of 10</h2>
-        <div class="question-container">
-            <div class="question">???????</div>
-            <div class="user-answer">Your answer: Not answered</div>
-            <div class="correct-answer">Correct answer: correct answer</div>
-        </div>
-
-        <h2>You have scored 5 out of 10</h2>
-        <div class="question-container">
-            <div class="question">???????</div>
-            <div class="user-answer">Your answer: Not answered</div>
-            <div class="correct-answer">Correct answer: correct answer</div>
-        </div>
-
-
-
-        <h2>You have scored 5 out of 10</h2>
-        <div class="question-container">
-            <div class="question">???????</div>
-            <div class="user-answer">Your answer: Not answered</div>
-            <div class="correct-answer">Correct answer: correct answer</div>
-        </div>
-
-
- 
-        <h2>You have scored 5 out of 10</h2>
-        <div class="question-container">
-            <div class="question">???????</div>
-            <div class="user-answer">Your answer: Not answered</div>
-            <div class="correct-answer">Correct answer: correct answer</div>
-        </div>
-
-        <button class="retake-btn">Retake quiz</button>
+    <div class="right-area">
+        <img id="mascot" src="https://media.wired.com/photos/6595c546f6145f9ca1309145/3:2/w_960,c_limit/_BC-wired_selmasabanovic_kaylareeferphoto-127.jpg" alt="Our mascot covering the answer"/>
+        <div id="reveal-area"></div>
     </div>
-    <!-- --------------------------------------------------------------------- -->
+    <div style="clear: both;"></div>
+ </div>
+</div>
 
-    <script src="./main.js"></script>
+ </div>
 </body>
+
 </html>
