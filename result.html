@@ -1,31 +1,87 @@
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const score = localStorage.getItem("score");
-  const answers = JSON.parse(localStorage.getItem("answers"));
-
-  document.querySelectorAll("h2")[0].innerText = `You scored ${score} out of 10`;
-
-  const container = document.querySelector(".quiz-result");
-  container.innerHTML = `<h2>You scored ${score} out of 10</h2>`;
-
-  answers.forEach((entry) => {
-    const div = document.createElement("div");
-    div.classList.add("question-container");
-    if (entry.userAnswer !== entry.correctAnswer) {
-      div.classList.add("incorrect");
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Results</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #2b1055, #7597de);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+      text-align: center;
     }
-    div.innerHTML = `
-      <div class="question">${entry.question}</div>
-      <div class="user-answer">Your answer: ${entry.userAnswer}</div>
-      <div class="correct-answer">Correct answer: ${entry.correctAnswer}</div>
-    `;
-    container.appendChild(div);
-  });
 
-  const btn = document.createElement("button");
-  btn.classList.add("retake-btn");
-  btn.innerText = "Retake Quiz";
-  btn.onclick = () => window.location.href = "game.html";
-  container.appendChild(btn);
-});
-</script>
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #ff4ef0;
+      letter-spacing: 1px;
+    }
+
+    .result-box {
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px solid #ff4ef0;
+      border-radius: 30px;
+      padding: 2rem 3rem;
+      box-shadow: 0 0 20px #ff4ef0, 0 0 60px #5a00ff;
+      animation: glow 2s infinite alternate;
+    }
+
+    .score {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      color: #00ffff;
+    }
+
+    .retake-btn {
+      padding: 1rem 2.5rem;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 50px;
+      background: linear-gradient(45deg, #00eaff, #d400ff);
+      color: white;
+      text-shadow: 1px 1px 2px black;
+      box-shadow: 0 0 15px #00ffff;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .retake-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 25px #00ffff;
+    }
+
+    @keyframes glow {
+      from {
+        box-shadow: 0 0 15px #ff4ef0, 0 0 30px #5a00ff;
+      }
+      to {
+        box-shadow: 0 0 25px #ff4ef0, 0 0 60px #5a00ff;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="result-box">
+    <h1>YOUR RESULT IS:</h1>
+    <div class="score" id="final-score">0 / 10</div>
+    <button class="retake-btn" onclick="window.location.href='game.html'">Try Again</button>
+  </div>
+
+  <script>
+    // Load score from localStorage
+    const score = localStorage.getItem("score") || 0;
+    document.getElementById("final-score").innerText = `${score} / 10`;
+  </script>
+
+</body>
+</html>
