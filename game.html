@@ -163,6 +163,13 @@
       padding: 0;
     }
 
+    #feedback-gif {
+      width: 200px;
+      height: 200px;
+      margin-top: 1rem;
+      animation: fadeInUp 0.5s ease;
+    }
+
     .hidden {
       display: none;
     }
@@ -214,6 +221,7 @@
     </div>
     <div class="right-area">
       <div id="feedback-text" class="feedback-text hidden"></div>
+      <img id="feedback-gif" class="hidden"/>
       <button id="next-btn" class="next-button hidden">Next Question</button>
     </div>
   </div>
@@ -285,8 +293,11 @@
       });
 
       const feedbackText = document.getElementById("feedback-text");
+      const feedbackGif = document.getElementById("feedback-gif");
       feedbackText.innerText = "";
       feedbackText.classList.add("hidden");
+      feedbackGif.classList.add("hidden");
+      feedbackGif.src = "";
     }
 
     function handleChoice(container, selectedKey) {
@@ -296,6 +307,7 @@
 
       const correctAnswer = selectedQuestions[currentQuestionIndex].answer;
       const feedbackText = document.getElementById("feedback-text");
+      const feedbackGif = document.getElementById("feedback-gif");
       feedbackText.classList.remove("hidden");
 
       if (selectedKey === correctAnswer) {
@@ -303,6 +315,8 @@
         score++;
         correctSound.play();
         feedbackText.innerText = "🎉 Correct! Great job!";
+        feedbackGif.src = "images/correct.gif"; // Use your own GIF path
+        feedbackGif.classList.remove("hidden");
       } else {
         if (container) container.classList.add("incorrect");
         incorrectSound.play();
@@ -311,6 +325,8 @@
           choiceContainers[correctIndex].classList.add("correct");
         }
         feedbackText.innerText = "😢 Incorrect. Better luck for next round!";
+        feedbackGif.src = "images/incorrect.gif"; // Use your own GIF path
+        feedbackGif.classList.remove("hidden");
       }
 
       choiceContainers.forEach(c => c.style.pointerEvents = "none");
