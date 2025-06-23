@@ -1,0 +1,60 @@
+# Random 10 Quiz
+
+Welcome to **Random 10 Quiz**!  
+A fun, interactive trivia web app that challenges you with 10 random questions every time you play. Test your knowledge, compete for high scores, and enjoy a vibrant, modern UI with sound effects and smooth animations.
+
+## Features
+
+- **10 Random Questions:** Each game session presents a new set of questions.
+- **Instant Feedback:** See if your answer is correct or incorrect with color highlights and sound effects.
+- **Timer:** Answer each question before time runs out!
+- **Score Tracking:** Your score is saved and displayed on the results page.
+- **Responsive Design:** Looks great on desktop and mobile.
+- **Volume Control:** Adjust sound effects volume in-game.
+
+## Folder Structure
+
+```
+Project-2/
+│
+├── index.html         # Home page
+├── game.html          # Quiz game page
+├── result.html        # Results page
+├── main.js            # Main quiz logic
+├── questions.json     # Question data (not included here)
+├── style.css          # Additional styles
+└── sounds/
+    ├── correct.mp3    # Sound for correct answers
+    └── incorrect.mp3  # Sound for incorrect answers
+```
+
+## Getting Started
+
+1. **Clone or Download** this repository.
+2. Make sure you have the following files:
+   - `index.html`, `game.html`, `result.html`
+   - `main.js`, `style.css`
+   - `sounds/correct.mp3`, `sounds/incorrect.mp3`
+   - `questions.json` (add your own questions in the correct format)
+3. Open `index.html` in your browser to start playing!
+
+## How to Play
+
+1. Click **Start Quiz** on the home page.
+2. Answer each question before the timer runs out.
+3. Get instant feedback with colors and sounds.
+4. At the end, view your score and try again to improve!
+
+## Customization
+
+- **Add/Change Questions:** Edit `questions.json` with your own trivia.
+- **Change Sounds:** Replace the MP3 files in the `sounds/` folder.
+- **Style:** Modify `style.css` or the `<style>` blocks in the HTML files for a new look.
+
+## Credits
+
+Made by Akash, Juno, and Mret.
+
+---
+
+Enjoy the quiz and challenge your friends!
