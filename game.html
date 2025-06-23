@@ -14,6 +14,7 @@
       overflow: hidden;
     }
 
+
     .quiz-header {
       display: flex;
       justify-content: space-between;
@@ -36,10 +37,10 @@
       gap: 1.5rem;
       font-size: 2rem;
       flex-wrap: wrap;
-      background: rgba(0,0,0,0.25);      /* Add a semi-transparent background */
-      border-radius: 20px;               /* Rounded corners */
-      box-shadow: 0 0 10px #00eaff;      /* Subtle glow */
-      padding: 0.7rem 1.5rem;            /* Padding for panel effect */
+      background: rgba(0,0,0,0.25);      
+      border-radius: 20px;               
+      box-shadow: 0 0 10px #00eaff;      
+      padding: 0.7rem 1.5rem;            
     }
 
     input[type="range"] {
@@ -315,7 +316,7 @@
         score++;
         correctSound.play();
         feedbackText.innerText = "🎉 Correct! Great job!";
-        feedbackGif.src = "images/correct.gif"; // Use your own GIF path
+        feedbackGif.src = "images/correct.gif"; 
         feedbackGif.classList.remove("hidden");
       } else {
         if (container) container.classList.add("incorrect");
@@ -325,7 +326,7 @@
           choiceContainers[correctIndex].classList.add("correct");
         }
         feedbackText.innerText = "😢 Incorrect. Better luck for next round!";
-        feedbackGif.src = "images/incorrect.gif"; // Use your own GIF path
+        feedbackGif.src = "images/incorrect.gif"; 
         feedbackGif.classList.remove("hidden");
       }
 

@@ -27,12 +27,24 @@
     }
 
     .result-box {
-      background: rgba(255, 255, 255, 0.05);
       border: 2px solid #ff4ef0;
       border-radius: 30px;
       padding: 2rem 3rem;
       box-shadow: 0 0 20px #ff4ef0, 0 0 60px #5a00ff;
       animation: glow 2s infinite alternate;
+    }
+
+    #result-message {
+      padding: 1rem 2.5rem;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 50px;
+      background: linear-gradient(45deg, #00eaff, #d400ff);
+      color: white;
+      text-shadow: 1px 1px 2px black;
+      box-shadow: 0 0 15px #00ffff;
+      transition: 0.3s;
+      margin-bottom: 1.5rem;
     }
 
     .score {
@@ -73,7 +85,9 @@
 
   <div class="result-box">
     <h1>YOUR RESULT IS:</h1>
+    <img id="result-gif" style="max-width:120px; margin:1rem 0;" />
     <div class="score" id="final-score">0 / 10</div>
+    <div id="result-message"></div>
     <button class="retake-btn" onclick="window.location.href='game.html'">Try Again</button>
   </div>
 
@@ -81,6 +95,22 @@
     // Load score from localStorage
     const score = localStorage.getItem("score") || 0;
     document.getElementById("final-score").innerText = `${score} / 10`;
+
+    // Set result message based on score
+    const message = document.getElementById("result-message");
+    if (score == 10) {
+      message.innerText = "🏆 Perfect! You're a quiz master!";
+      document.getElementById("result-gif").src = "images/perfect.gif";
+    } else if (score >= 7) {
+      message.innerText = "🎉 Great job! You know your stuff!";
+      document.getElementById("result-gif").src = "images/great.gif";
+    } else if (score >= 4) {
+      message.innerText = "👍 Not bad! Try again for a higher score!";
+      document.getElementById("result-gif").src = "images/notbad.gif";
+    } else {
+      message.innerText = "😅 Keep practicing! You'll get better!";
+      document.getElementById("result-gif").src = "images/lowest.gif";
+    }
   </script>
 
 </body>
