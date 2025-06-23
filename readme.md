@@ -1,6 +1,7 @@
-# Random 10 Quiz
+# Random 10- A Quiz App
 
-Welcome to **Random 10 Quiz**!  
+Welcome to **Random 10**!  
+
 A fun, interactive trivia web app that challenges you with 10 random questions every time you play. Test your knowledge, compete for high scores, and enjoy a vibrant, modern UI with sound effects and smooth animations.
 
 ## Features
@@ -31,11 +32,15 @@ Project-2/
 ## Getting Started
 
 1. **Clone or Download** this repository.
+
+
 2. Make sure you have the following files:
    - `index.html`, `game.html`, `result.html`
    - `main.js`, `style.css`
    - `sounds/correct.mp3`, `sounds/incorrect.mp3`
    - `questions.json` (add your own questions in the correct format)
+
+
 3. Open `index.html` in your browser to start playing!
 
 ## How to Play
@@ -51,10 +56,26 @@ Project-2/
 - **Change Sounds:** Replace the MP3 files in the `sounds/` folder.
 - **Style:** Modify `style.css` or the `<style>` blocks in the HTML files for a new look.
 
+
 ## Credits
 
-Made by Akash, Juno, and Mret.
+- Akash Ramkaran
+  * Design and implement the overall UI/UX (color themes, layouts, responsive design).
+  * Create and style all HTML pages (index.html, game.html, result.html).
+  * Collaborate on integrating feedback and animation elements.
+
+- Juno Joseph
+ * Develop the main quiz logic in main.js (question loading, answer checking, score tracking, timer).
+ * Handle data management (fetching and shuffling questions from questions.json).
+ * Implement local storage for saving scores and quiz state.  
+ * Collaborate on integrating sound and feedback logic. 
+
+- Mret Hein
+ * Implement interactive features: sound effects, feedback animations, and visual cues
+ * Add and configure audio files and volume controls.
+ * Enhance user experience with instant feedback, GIFs, and text animations.
+ * Collaborate on testing, debugging, and refining the app’s interactivity.
 
 ---
 
-Enjoy the quiz and challenge your friends!
+Invite your friends and have a go at Random 10! 
