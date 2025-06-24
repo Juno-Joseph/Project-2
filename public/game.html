@@ -231,7 +231,11 @@
   <audio id="correct-sound" src="sounds/correct.mp3"></audio>
   <audio id="incorrect-sound" src="sounds/incorrect.mp3"></audio>
 
+
+              <!-- SCRIPT -->
+
   <script>
+    let questionCount = parseInt(localStorage.getItem("questionCount")) || 10;
     let currentQuestionIndex = 0;
     let score = 0;
     let questions = [];
@@ -262,7 +266,7 @@
       .then(response => response.json())
       .then(data => {
         questions = data;
-        selectedQuestions = getRandomQuestions(10, questions);
+        selectedQuestions = getRandomQuestions(questionCount, questions);
         showQuestion();
       })
       .catch(error => console.error("Error loading questions:", error));
@@ -284,7 +288,7 @@
       choiceTexts[2].innerText = q.C;
       choiceTexts[3].innerText = q.D;
 
-      questionCounter.innerText = `Question: ${currentQuestionIndex + 1} / 10`;
+      questionCounter.innerText = `Question: ${currentQuestionIndex + 1} /  ${questionCount}`;
       scoreDisplay.innerText = `Score: ${score}`;
 
       choiceContainers.forEach((container, index) => {
@@ -344,7 +348,7 @@
     nextButton.onclick = () => {
       nextButton.classList.add("hidden");
       currentQuestionIndex++;
-      if (currentQuestionIndex < 10) {
+      if (currentQuestionIndex < questionCount) {
         showQuestion();
       } else {
         localStorage.setItem("score", score);

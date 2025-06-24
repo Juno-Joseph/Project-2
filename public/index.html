@@ -113,14 +113,26 @@
     <p>Get ready to test your brainpower with a wild mix of fun, quirky,<br>
     and mind-blowing trivia! 🧠 💥</p>
 
-    <p>Every time you play, you'll face 10 random questions —<br>
+    <p>Every time you play, you'll face a set of random questions —<br>
     so no two games are ever the same.</p>
 
-    <p>Click below to start your challenge and prove you're<br>
-    the ultimate trivia master!</p>
+    <p>Choose how many questions you want to answer,<br>
+    then click below to start your challenge!</p>
+
+    <div style="margin: 1.5rem 0;">
+      <label for="question-count" style="font-size:1.1rem; color:#00eaff; margin-right:0.5rem;">
+        Number of Questions:
+      </label>
+      <select id="question-count" style="font-size:1.1rem; border-radius:8px; padding:0.3rem 1rem;">
+        <option value="5">5</option>
+        <option value="10" selected>10</option>
+        <option value="15">15</option>
+        <option value="20">20</option>
+      </select>
+    </div>
 
     <div class="btn-container">
-      <a href="game.html" class="btn">START QUIZ</a>
+      <a href="game.html" class="btn" id="start-quiz-btn">START QUIZ</a>
       <a href="result.html" class="btn">VIEW RESULTS</a>
     </div>
   </div>
@@ -143,6 +155,12 @@
     }
 
     window.onload = typeWriter;
+
+    // Save selected question count to localStorage before starting quiz
+    document.getElementById("start-quiz-btn").addEventListener("click", function(e) {
+      const count = document.getElementById("question-count").value;
+      localStorage.setItem("questionCount", count);
+    });
   </script>
 </body>
 </html>
