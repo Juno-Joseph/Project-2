@@ -1,6 +1,7 @@
 # Random 10- A Quiz App
 
-Welcome to **Random 10**!  
+[Welcome to **Random 10**!](https://juno-joseph.github.io/Project-2/)
+
 
 A fun, interactive trivia web app that challenges you with 10 random questions every time you play. Test your knowledge, compete for high scores, and enjoy a vibrant, modern UI with sound effects and smooth animations.
 
