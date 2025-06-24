@@ -77,6 +77,15 @@ Project-2/
  * Enhance user experience with instant feedback, GIFs, and text animations.
  * Collaborate on testing, debugging, and refining the app’s interactivity.
 
+
 ---
 
-Invite your friends and have a go at Random 10! 
+## Demo Walkthrough
+
+Watch the video below for a quick walkthrough of Random 10 in action:
+
+[![Demo Video](/demo-screenshot.jpg)](/demo-1.mp4)
+
+*Click the image above to view the demo
+
+Invite your friends and have a go at Random 10!  
