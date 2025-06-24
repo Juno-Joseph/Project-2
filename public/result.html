@@ -15,7 +15,7 @@
       align-items: center;
       justify-content: center;
       height: 100vh;
-      overflow: hidden;
+      overflow: auto; /* Allow scrolling if content overflows */
       text-align: center;
     }
 
@@ -32,6 +32,8 @@
       padding: 2rem 3rem;
       box-shadow: 0 0 20px #ff4ef0, 0 0 60px #5a00ff;
       animation: glow 2s infinite alternate;
+      max-height: 90vh;         /* Prevent box from exceeding viewport */
+      overflow-y: auto;         /* Scroll inside the box if needed */
     }
 
     #result-message {
@@ -90,6 +92,8 @@
     <div id="result-message"></div>
     <button class="retake-btn" onclick="window.location.href='game.html'">Try Again</button>
     <button class="retake-btn" onclick="window.location.href='index.html'">Homepage</button>
+
+    <div id="answers-list" style="margin-top:2rem;text-align:left;"></div>
   </div>
 
   <script>
@@ -111,6 +115,39 @@
     } else {
       message.innerText = "😅 Keep practicing! You'll get better!";
       document.getElementById("result-gif").src = "images/lowest.gif";
+    }
+
+    // Load answers from localStorage
+    const answers = JSON.parse(localStorage.getItem("answers") || "[]");
+    const answersList = document.getElementById("answers-list");
+
+    if (answers.length > 0) {
+      let html = `<h2 style="color:#00ffff;font-size:1.3rem;margin-bottom:1rem;">Questions & Correct Answers</h2>`;
+      html += "<ol style='padding-left:1.2em;'>";
+      answers.forEach((item, idx) => {
+        // Show both the answer key (A/B/C/D) and the value (the text)
+        html += `<li style="margin-bottom:1em;">
+          <div style="font-weight:bold;">${item.question}</div>
+          <div>
+            <span style="color:#00ffae;">Your answer:</span> 
+            <span style="color:${item.userAnswer === item.correctAnswer ? '#00ffae' : '#ff4e4e'};">
+              ${
+                item.userAnswer && item.userAnswer !== "None"
+                  ? `${item.userAnswer}: ${item[item.userAnswer] || "<i>Unknown</i>"}`
+                  : "<i>No answer</i>"
+              }
+            </span>
+          </div>
+          <div>
+            <span style="color:#ff4ef0;">Correct answer:</span> 
+            <span style="color:#ff4ef0;">
+              ${item.correctAnswer}: ${item[item.correctAnswer] || "<i>Unknown</i>"}
+            </span>
+          </div>
+        </li>`;
+      });
+      html += "</ol>";
+      answersList.innerHTML = html;
     }
   </script>
 

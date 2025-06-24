@@ -228,8 +228,8 @@
   </div>
 
   <!-- Audio sounds -->
-  <audio id="correct-sound" src="sounds/correct.mp3"></audio>
-  <audio id="incorrect-sound" src="sounds/incorrect.mp3"></audio>
+  <audio id="correct-sound" src="sounds/correct.mp3" preload="auto"></audio>
+  <audio id="incorrect-sound" src="sounds/incorrect.mp3" preload="auto"></audio>
 
 
               <!-- SCRIPT -->
@@ -320,12 +320,14 @@
       if (selectedKey === correctAnswer) {
         if (container) container.classList.add("correct");
         score++;
+        correctSound.currentTime = 0; // Reset to start
         correctSound.play();
         feedbackText.innerText = "🎉 Correct! Great job!";
         feedbackGif.src = "images/correct.gif"; 
         feedbackGif.classList.remove("hidden");
       } else {
         if (container) container.classList.add("incorrect");
+        incorrectSound.currentTime = 0; // Reset to start
         incorrectSound.play();
         const correctIndex = ["A", "B", "C", "D"].indexOf(correctAnswer);
         if (correctIndex >= 0) {
@@ -341,7 +343,11 @@
       userAnswers.push({
         question: selectedQuestions[currentQuestionIndex].question,
         userAnswer: selectedKey,
-        correctAnswer: correctAnswer
+        correctAnswer: correctAnswer,
+        A: selectedQuestions[currentQuestionIndex].A,
+        B: selectedQuestions[currentQuestionIndex].B,
+        C: selectedQuestions[currentQuestionIndex].C,
+        D: selectedQuestions[currentQuestionIndex].D
       });
 
       nextButton.classList.remove("hidden");
