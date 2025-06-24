@@ -84,6 +84,6 @@ Project-2/
 
 Watch the video below for a quick walkthrough of Random 10 in action:
 
-[![Demo Video](https://github.com/user-attachments/assets/e5af0690-9bc7-4351-9892-7d31fb311fb7)
+https://github.com/user-attachments/assets/e5af0690-9bc7-4351-9892-7d31fb311fb7
 
 Invite your friends and have a go at Random 10!  
