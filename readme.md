@@ -84,7 +84,7 @@ Project-2/
 
 Watch the video below for a quick walkthrough of Random 10 in action:
 
-[![Demo Video](/demo-screenshot.jpg)](/demo-1.mp4)
+[![Demo Video](/demo-screenshot.jpg)](/demo.mp4)
 
 *Click the image above to view the demo
 
