@@ -76,9 +76,9 @@ Project-2/
  * Add and configure audio files and volume controls.
  * Enhance user experience with instant feedback, GIFs, and text animations.
  * Styled the basic layout for game.html and result.html
- * Added the option for users to choose no. of questions by using local storage 
- * Added the feature of showing questions and correct answers on the results page
- * Credit those who wrote or edited the README, user guides, or code comments. 
+ * Added the option for users to choose no. of questions
+ * Added the feature of showing questions and correct answers on the results page by using local storage
+ * Fixed some bugs of audio latency
  * Collaborate on testing, debugging, and refining the app’s interactivity.
 
 
