@@ -66,20 +66,20 @@ Project-2/
   * Collaborate on integrating feedback and animation elements.
 
 - Juno Joseph
- * Develop the main quiz logic in main.js (question loading, answer checking, score tracking, timer).
- * Handle data management (fetching and shuffling questions from questions.json).
- * Implement local storage for saving scores and quiz state.  
- * Collaborate on integrating sound and feedback logic. 
+  * Develop the main quiz logic in main.js (question loading, answer checking, score tracking, timer).
+  * Handle data management (fetching and shuffling questions from questions.json).
+  * Implement local storage for saving scores and quiz state.  
+  * Collaborate on integrating sound and feedback logic. 
 
 - Mret Hein
- * Implement interactive features: sound effects, feedback animations, and visual cues
- * Add and configure audio files and volume controls.
- * Enhance user experience with instant feedback, GIFs, and text animations.
- * Styled the basic layout for game.html and result.html
- * Added the option for users to choose no. of questions
- * Added the feature of showing questions and correct answers on the results page by using local storage
- * Fixed some bugs of audio latency
- * Collaborate on testing, debugging, and refining the app’s interactivity.
+  * Implement interactive features: sound effects, feedback animations, and visual cues
+  * Add and configure audio files and volume controls.
+  * Enhance user experience with instant feedback, GIFs, and text animations.
+  * Styled the basic layout for game.html and result.html
+  * Added the option for users to choose no. of questions
+  * Added the feature of showing questions and correct answers on the results page by using local storage
+  * Fixed some bugs of audio latency
+  * Collaborate on testing, debugging, and refining the app’s interactivity.
  
 
 ---
